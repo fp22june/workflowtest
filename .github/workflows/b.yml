@@ -1,0 +1,36 @@
+name: 'b'
+
+on:
+  push:
+    branch:
+      - master
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      build_mode:
+        description: 'build_mode'
+        default: 'devel'
+        type: string
+        required: false
+
+
+jobs:
+  b:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Clone repository
+      uses: actions/checkout@v4
+    - name: b
+      run: |
+        echo "w1"
+        echo "inputs.build_mode=${{ inputs.build_mode }} "
+        echo "BUILD_MODE=$BUILD_MODE"
+        echo $(ls ./)
+        bash ./scripts/makeenv.sh -e ${{ github.event_name }} -m ${{ inputs.build_mode }}
+        BUILD_MODE=$(cat ./build.artifacts/env/build_mode.env)
+        echo "w3"
+        echo "BUILD_MODE=$BUILD_MODE"
+        echo $(ls ./)
+        cd /
+        echo "w4"
+        echo $(ls ./)

@@ -40,7 +40,7 @@ jobs:
 
         echo "inputs.build_mode=${{ inputs.build_mode }} "
         echo "BUILD_MODE=$BUILD_MODE"
-        echo $(ls ./)
+        echo "ls ./ = $(ls ./)"
 
         echo "bash *.sh  - ./, mkdir"
 
@@ -49,17 +49,17 @@ jobs:
         BUILD_MODE=$(cat ./build.artifacts/env/build_mode.env)
         echo "w3"
         echo "BUILD_MODE=$BUILD_MODE"
-        echo $(ls ./)
+        echo "ls ./ = $(ls ./)"
 
         echo "*.sh  - ./, mkdir"
-        echo $(ls ./)
+        echo "ls ./ = $(ls ./)"
         ./script/mkd.sh
         echo "w4"
-        echo $(ls ./)
+        echo "ls ./ = $(ls ./)"
 
 
         echo "w5"
         cd /
         echo 'cd /'
-        echo $(ls ./)
+        echo "ls ./ = $(ls ./)"
 

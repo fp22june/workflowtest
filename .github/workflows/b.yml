@@ -23,14 +23,40 @@ jobs:
     - name: b
       run: |
         echo "w1"
+
+        echo "HOME=$HOME"
+
+        echo "exec *.sh"
+        ./script/scripthome.sh
+
+        echo "bash *.sh"
+        besh ./script/scripthome.sh
+
+
+        echo "w2"
+
         echo "inputs.build_mode=${{ inputs.build_mode }} "
         echo "BUILD_MODE=$BUILD_MODE"
         echo $(ls ./)
+
+        echo "bash *.sh  - ./, mkdir"
+
         bash ./script/makeenv.sh -e ${{ github.event_name }} -m ${{ inputs.build_mode }}
+        echo 'BUILD_MODE=\$(cat ./build.artifacts/env/build_mode.env)'
         BUILD_MODE=$(cat ./build.artifacts/env/build_mode.env)
         echo "w3"
         echo "BUILD_MODE=$BUILD_MODE"
         echo $(ls ./)
-        cd /
+
+        echo "*.sh  - ./, mkdir"
+        echo $(ls ./)
+        ./script/mkd.sh
         echo "w4"
         echo $(ls ./)
+
+
+        echo "w5"
+        cd /
+        echo ('cd /')
+        echo $(ls ./)
+

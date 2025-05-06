@@ -41,13 +41,16 @@ if [ $MODE_IS_VALID -ne 1 ] ; then
     exit 1
 fi
         echo "s1"
-        echo "ls ./ = $(ls ./)"
+        echo "ls start"
+        echo $(ls ./)
+        echo "ls end"
 
 mkdir -p $ARTIFACTS_DIR
 mkdir -p $ARTIFACTS_DIR/env
         echo "s2"
-        echo "ls ./ = $(ls ./)"
-        echo "s3"
+        echo "ls start"
+        echo $(ls ./)
+        echo "ls end"
 
 echo $BUILD_MODE > $ARTIFACTS_DIR/env/build_mode.env
 echo "BUILD_MODE: $(cat $ARTIFACTS_DIR/env/build_mode.env)"

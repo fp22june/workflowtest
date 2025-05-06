@@ -30,7 +30,10 @@ jobs:
         ./script/scripthome.sh
 
         echo "bash *.sh"
-        besh ./script/scripthome.sh
+        bash ./script/scripthome.sh
+
+        echo "sudo bash *.sh"
+        sudo bash ./script/scripthome.sh
 
 
         echo "w2"
@@ -57,6 +60,6 @@ jobs:
 
         echo "w5"
         cd /
-        echo ('cd /')
+        echo 'cd /'
         echo $(ls ./)
 
